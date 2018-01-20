@@ -20,9 +20,8 @@ would look something like (after having installing and configuring Minishift):
 ```
 $ export MINISHIFT_ENABLE_EXPERIMENTAL=y
 $ minishift start --service-catalog
-$ minishift addons install ansible-broker-addon
+$ minishift addons install ./ansible-service-broker-addon
 $ minishift addons apply ansible-service-broker
-$ oc login -u system:admin
 ```
 
 You will also need certain environment variables set:
