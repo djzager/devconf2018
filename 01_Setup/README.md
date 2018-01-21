@@ -33,8 +33,16 @@ $ eval $(minishift docker-env)
 
 ### Troubleshooting
 
-You may run into a rate limit with the GitHub API. A way to workaround this is
-to use a [GitHub API Token](https://github.com/settings/tokens).
+You may run into a rate limit with the GitHub API. Looks something like:
+
+```
+Error starting the cluster: Error attempting to download and cache oc: Cannot get the OpenShift release version v3.7.1: GET
+https://api.github.com/repos/openshift/origin/releases/tags/v3.7.1: 403 API rate limit exceeded for 66.187.233.202. (But here's the good news:
+Authenticated requests get a higher rate limit. Check out the documentation for more details.); rate reset in 6m17.0119686s
+```
+
+A way to workaround this is to use a
+[GitHub API Token](https://github.com/settings/tokens).
 
 ```
 $ export MINISHIFT_GITHUB_API_TOKEN=$YOUR_GITHUB_API_TOKEN
