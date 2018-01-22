@@ -10,5 +10,15 @@ oc delete clusterrole asb-auth
 oc delete clusterrole access-asb-role
 oc delete broker ansible-service-broker
 
+# Delete resources created for apb tool permissions that will not be cleaned up
+# by the project delete
+oc delete clusterrolebinding apbtool-access-asb
+oc delete clusterrolebinding apbtool-relist
+oc delete clusterrole apbtool-relist
+oc delete clusterrolebinding apbtool-relist
+oc delete rolebinding apbtool-openshift-admin -n openshift
+oc delete clusterrolebinding apbtool-system-registry
+oc delete clusterrolebinding apbtool-system-image-builder
+
 # Delete ansible-service-broker project
 oc delete project ansible-service-broker
