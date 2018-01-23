@@ -1,0 +1,66 @@
+---
+- name: Create postgresql service
+  k8s_v1_service:
+    name: postgresql
+    namespace: '{{ namespace }}'
+    labels:
+      app: postgresql
+      service: postgresql
+    selector:
+      app: postgresql
+      service: postgresql
+    ports:
+    - name: port-5432
+      port: 5432
+      protocol: TCP
+      target_port: 5432
+    state: present
+
+- name: Create PostgreSQL Deployment Config
+  openshift_v1_deployment_config:
+    name: postgresql
+    namespace: '{{ namespace }}'
+    labels:
+      app: postgresql
+      service: postgresql
+    replicas: 1
+    selector:
+      app: postgresql
+      service: postgresql
+    spec_template_metadata_labels:
+      app: postgresql
+      service: postgresql
+    containers:
+    - env:
+      - name: POSTGRESQL_PASSWORD
+        value: '{{ postgresql_password }}'
+      - name: POSTGRESQL_USER
+        value: '{{ postgresql_user }}'
+      - name: POSTGRESQL_DATABASE
+        value: '{{ postgresql_database }}'
+      image: "registry.access.redhat.com/rhscl/postgresql-{{ postgresql_version | replace('.', '') }}-rhel7"
+      image_pull_policy: IfNotPresent
+      name: postgresql
+      ports:
+      - container_port: 5432
+        protocol: TCP
+      termination_message_path: /dev/termination-log
+      working_dir: /
+    dns_policy: ClusterFirst
+    restart_policy: Always
+    termination_grace_period_seconds: 30
+    test: false
+    triggers:
+    - type: ConfigChange
+    state: present
+
+- name: encode bind credentials
+  asb_encode_binding:
+    fields:
+      DB_TYPE: postgres
+      DB_HOST: postgresql
+      DB_PORT: "5432"
+      DB_USER: "{{ postgresql_user }}"
+      DB_PASSWORD: "{{ postgresql_password }}"
+      DB_NAME: "{{ postgresql_database }}"
+
