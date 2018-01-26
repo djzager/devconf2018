@@ -6,8 +6,8 @@ async: optional
 metadata:
   documentationUrl: https://www.mediawiki.org/wiki/Documentation
   longDescription: An apb that deploys Mediawiki 1.23
-  displayName: Mediawiki (APB)
-  console.openshift.io/iconClass: icon-mediawiki
+  displayName: Mediawiki DevConf (APB)
+  imageUrl: https://devconf.cz/images/icon/cz/devconf-cz-icon.png
 plans:
   - name: default
     description: An APB that deploys MediaWiki

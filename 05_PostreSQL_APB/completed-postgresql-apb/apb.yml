@@ -6,8 +6,8 @@ async: optional
 metadata:
   documentationUrl: https://www.postgresql.org/docs/
   longDescription: An apb that deploys postgresql 9.4, 9.5, or 9.6.
-  displayName: PostgreSQL (APB)
-  console.openshift.io/iconClass: icon-postgresql
+  displayName: PostgreSQL DevConf (APB)
+  imageUrl: https://devconf.cz/images/icon/cz/devconf-cz-icon.png
 plans:
   - name: default
     description: A single DB server with no storage
