@@ -34,11 +34,11 @@ in OpenShift/Kubernetes.
 
 1. A containerized Ansible runtime for running Ansible
 1. A playbook for each of the actions that can be performed on the service
-  - provision.yaml - Install
-  - deprovision.yaml - Uninstall
-  - bind.yaml - Grant
-  - unbind.yaml - Revoke
-  - update.yaml	- Upgrade
+    - provision.yaml - Install
+    - deprovision.yaml - Uninstall
+    - bind.yaml - Grant
+    - unbind.yaml - Revoke
+    - update.yaml	- Upgrade
 1. Metadata
 
 # References
