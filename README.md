@@ -1,5 +1,7 @@
 # Automating Application Deployment with Ansible Playbook Bundles
 
+[Google Slides Link](https://docs.google.com/presentation/d/18pCZKg6W9r4f7wUeFQ1HV6qayP_FSFFbGf7UJDkOi5g)
+
 ## Agenda
 
 1. What is an Ansible Playbook Bundle (APB)?
